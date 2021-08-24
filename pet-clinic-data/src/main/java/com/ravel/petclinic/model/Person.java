@@ -1,4 +1,4 @@
-package com.ravel.springpetclinic.model;
+package com.ravel.petclinic.model;
 
 import lombok.Data;
 
