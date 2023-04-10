@@ -1,5 +1,8 @@
 package com.ravel.petclinic.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Veterinarian extends Person{
 
     private String vetCode;

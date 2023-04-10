@@ -1,8 +1,5 @@
 package com.ravel.petclinic.bootstrap;
 
-import com.ravel.petclinic.map.OwnerServiceMap;
-import com.ravel.petclinic.map.PetServiceMap;
-import com.ravel.petclinic.map.VeterinarianServiceMap;
 import com.ravel.petclinic.model.Owner;
 import com.ravel.petclinic.model.Pet;
 import com.ravel.petclinic.model.PetType;
@@ -22,24 +19,26 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
 
     private final VeterinarianService veterinarianService;
-    public DataLoader(){
-        petService = new PetServiceMap();
-        ownerService = new OwnerServiceMap();
-        veterinarianService = new VeterinarianServiceMap();
+
+    public DataLoader(PetService petService, OwnerService ownerService, VeterinarianService veterinarianService) {
+        this.petService = petService;
+        this.ownerService = ownerService;
+        this.veterinarianService = veterinarianService;
     }
+
     @Override
     public void run(String... args) throws Exception {
         Owner owner = new Owner();
         owner.setId(1L);
         owner.setFirstName("Ravel");
         owner.setLastName("Melo");
-        ownerService.save(owner);
+       ownerService.saveOwner(owner);
 
         Owner owner1 = new Owner();
         owner1.setId(2L);
         owner1.setFirstName("Karol");
         owner1.setLastName("Lima");
-        ownerService.save(owner1);
+        ownerService.saveOwner(owner1);
 
         System.out.println("Loaded Owners");
 
@@ -48,7 +47,7 @@ public class DataLoader implements CommandLineRunner {
         vet.setFirstName("Fernando");
         vet.setLastName("Vasconcelos");
         vet.setVetCode("VET01345");
-        veterinarianService.save(vet);
+        veterinarianService.saveVet(vet);
 
         Veterinarian vet1 = new Veterinarian();
         vet1.setId(1L);
@@ -56,7 +55,7 @@ public class DataLoader implements CommandLineRunner {
         vet1.setLastName("Vasconcelos");
         vet1.setVetCode("VET01344");
 
-        veterinarianService.save(vet1);
+        veterinarianService.saveVet(vet1);
 
         System.out.println("Loading vets ...");
 
@@ -69,7 +68,7 @@ public class DataLoader implements CommandLineRunner {
         pet.setPetType(petType);
         pet.setBirthDate(LocalDate.now());
 
-        petService.save(pet);
+        petService.savePet(pet);
 
         System.out.println("Loading Pet");
 
