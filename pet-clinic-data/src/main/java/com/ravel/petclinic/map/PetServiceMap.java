@@ -2,10 +2,11 @@ package com.ravel.petclinic.map;
 
 import com.ravel.petclinic.model.Pet;
 import com.ravel.petclinic.service.MapService;
+import com.ravel.petclinic.service.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends MapService<Pet, Long> {
+public class PetServiceMap extends MapService<Pet, Long> implements PetService {
     @Override
     public Set<Pet> findAll() {
         return super.findAll();

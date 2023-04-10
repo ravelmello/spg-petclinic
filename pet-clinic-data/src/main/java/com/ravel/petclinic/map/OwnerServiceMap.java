@@ -2,10 +2,11 @@ package com.ravel.petclinic.map;
 
 import com.ravel.petclinic.model.Owner;
 import com.ravel.petclinic.service.MapService;
+import com.ravel.petclinic.service.OwnerService;
 
 import java.util.Set;
 
-public class OwnerServiceMap extends MapService<Owner, Long> {
+public class OwnerServiceMap extends MapService<Owner, Long> implements OwnerService {
 
     @Override
     public Set<Owner> findAll() {
@@ -30,5 +31,10 @@ public class OwnerServiceMap extends MapService<Owner, Long> {
     @Override
     public Owner findById(Long id) {
         return super.findById(id);
+    }
+
+    @Override
+    public Owner findByName(String name) {
+        return null;
     }
 }

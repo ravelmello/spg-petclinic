@@ -6,3 +6,4 @@ public interface OwnerService extends CrudServiceGeneric<Owner, Long>{
     Owner findByName(String name);
 
 }
+ 
